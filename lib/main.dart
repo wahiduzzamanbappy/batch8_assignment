@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,67 +8,114 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyProfile(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class MyProfile extends StatelessWidget {
+  const MyProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 254, 247, 255),
       appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
+        title: const Text('My Profile'),
+        backgroundColor: Colors.amber,
+        actions: [
+          const Icon(Icons.add),
+          const SizedBox(
+            width: 16,
+          ),
+          const Icon(Icons.settings),
+          const SizedBox(
+            width: 16,
+          ),
+          const Icon(Icons.phone),
+        ],
       ),
-      body: Center(
-
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            const Center(
+              child: CircleAvatar(
+                radius: 80,
+                backgroundColor: Color.fromARGB(255, 234, 221, 255),
+                child: Icon(
+                  Icons.icecream_outlined,
+                  size: 80,
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const Text(
+              "Ice Cream is very delicious right?",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Center(
+                child: CircleAvatar(
+              radius: 80,
+              backgroundColor: const Color.fromARGB(255, 234, 221, 255),
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Icon(
+                      Icons.chevron_left_outlined,
+                      size: 80,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: const Icon(
+                      Icons.chevron_right_outlined,
+                      size: 80,
+                    ),
+                  ),
+                ],
+              ),
+            ),),
+            const Text(
+              "Programming is not boring if you love it.",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            const Center(
+              child: CircleAvatar(
+                radius: 80,
+                backgroundColor: Color.fromARGB(255, 234, 221, 255),
+                child: Icon(
+                  Icons.egg_outlined,
+                  size: 80,
+                ),
+              ),
+            ),
+            const Text(
+              "If you submit code directly copy from chatgpt then your mark will 0",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
